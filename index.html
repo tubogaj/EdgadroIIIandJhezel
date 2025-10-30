@@ -15,19 +15,11 @@
     background: #000;
   }
 
-  /* ✅ Sections fade in smoothly and staggered */
+  /* ✅ Full-width image sections */
   section {
     width: 100%;
     display: block;
     line-height: 0;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-  }
-
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   section img {
@@ -62,7 +54,7 @@
     transform: scale(1.2);
   }
 
-  /* ✅ Guestbook section with smooth transition */
+  /* ✅ Guestbook section (no animation, no music) */
   .guestbook {
     min-height: 100vh;
     background:
@@ -77,13 +69,10 @@
     align-items: center;
     justify-content: flex-start;
     padding: 100px 20px 80px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
     position: relative;
   }
 
-  /* ✅ Seamless blend at top edge */
+  /* ✅ Seamless blend */
   .guestbook::before {
     content: "";
     position: absolute;
@@ -92,11 +81,6 @@
     right: 0;
     height: 80px;
     background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
-  }
-
-  .guestbook.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .guestbook h1 {
@@ -153,22 +137,7 @@
     background: #9b6cb8;
   }
 
-  /* ✅ Music toggle */
-  #music {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 9999;
-    background: rgba(255,255,255,0.3);
-    border-radius: 50%;
-    border: none;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    backdrop-filter: blur(6px);
-  }
-
-  /* ✅ Mobile and tablet responsive adjustments */
+  /* ✅ Mobile optimization */
   @media (max-width: 768px) {
     .guestbook {
       padding: 80px 25px 60px;
@@ -204,18 +173,12 @@
     body { background: none; color: #3e2f3e; }
     .guestbook { background: #fff; padding: 2cm; }
     .guest-actions img { width: 220px; height: 220px; }
-    .nav-dots, #music { display: none; }
+    .nav-dots { display: none; }
   }
 </style>
 </head>
 
 <body>
-
-<!-- 🎵 Background Music -->
-<audio id="bgMusic" loop autoplay>
-  <source src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/The%20Carpenters%20-%20I%20Won't%20Last%20A%20Day%20Without%20You%20(Lyrics).mp3" type="audio/mpeg">
-</audio>
-<button id="music">🎵</button>
 
 <!-- 🌸 Navigation Dots -->
 <div class="nav-dots">
@@ -231,7 +194,7 @@
   <div class="dot" onclick="scrollToSection(9)"></div>
 </div>
 
-<!-- 🖼️ Fade-in Image Sections -->
+<!-- 🖼️ Image Sections -->
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Illust-1.jpg" alt="Front page"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215615.png" alt="Page 1"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215655.png" alt="Page 2"></section>
@@ -275,36 +238,16 @@
 <script>
   const dots = document.querySelectorAll('.dot');
   const sections = document.querySelectorAll('section');
-  const guestbook = document.querySelector('.guestbook');
 
   function scrollToSection(i) {
     sections[i].scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Smooth fade-in and stagger effect
   window.addEventListener('scroll', () => {
     let index = sections.length;
     while (--index && window.scrollY + 200 < sections[index].offsetTop) {}
     dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
-
-    sections.forEach((sec, i) => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.9) {
-        setTimeout(() => sec.classList.add('visible'), i * 120);
-      }
-    });
-  });
-
-  // 🎵 Music toggle
-  const bgMusic = document.getElementById('bgMusic');
-  const btn = document.getElementById('music');
-  let playing = true;
-
-  btn.addEventListener('click', () => {
-    playing = !playing;
-    if (playing) { bgMusic.play(); btn.textContent = '🎵'; }
-    else { bgMusic.pause(); btn.textContent = '🔇'; }
   });
 </script>
 
