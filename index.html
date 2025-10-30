@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jhezel & Edgardo Wedding 💍</title>
 
+<!-- 🌸 Elegant Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,8 +18,9 @@
     background: #000;
   }
 
-  /* ✅ Full-width image sections */
+  /* ✅ Full-width image sections with soft fade transitions */
   section {
+    position: relative;
     width: 100%;
     display: block;
     line-height: 0;
@@ -28,7 +32,18 @@
     display: block;
   }
 
-  /* ✅ Navigation dots */
+  section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.8));
+    pointer-events: none;
+  }
+
+  /* ✅ Navigation Dots */
   .nav-dots {
     position: fixed;
     top: 50%;
@@ -54,7 +69,7 @@
     transform: scale(1.2);
   }
 
-  /* ✅ Guestbook section (no animation, no music) */
+  /* ✅ Guestbook Section */
   .guestbook {
     min-height: 100vh;
     background:
@@ -69,28 +84,19 @@
     align-items: center;
     justify-content: flex-start;
     padding: 100px 20px 80px;
-    position: relative;
-  }
-
-  /* ✅ Seamless blend */
-  .guestbook::before {
-    content: "";
-    position: absolute;
-    top: -80px;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
   }
 
   .guestbook h1 {
-    font-size: 2.3em;
-    margin-bottom: 25px;
+    font-family: "Great Vibes", cursive;
+    font-size: 3em;
     color: #704a8c;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
   }
 
   .guestbook h2 {
+    font-family: "Great Vibes", cursive;
+    font-size: 2.2em;
     color: #8d63aa;
     margin-top: 35px;
     margin-bottom: 10px;
@@ -137,23 +143,31 @@
     background: #9b6cb8;
   }
 
-  /* ✅ Mobile optimization */
+  /* ✅ Mobile Responsive Design */
   @media (max-width: 768px) {
+    section::after { height: 80px; }
+
     .guestbook {
-      padding: 80px 25px 60px;
+      padding: 70px 25px 60px;
       background-attachment: scroll;
     }
 
     .guestbook h1 {
-      font-size: 1.8em;
+      font-size: 2.2em;
       margin-bottom: 18px;
+    }
+
+    .guestbook h2 {
+      font-size: 1.8em;
+      margin-top: 25px;
+      margin-bottom: 10px;
     }
 
     .guestbook p {
       font-size: 1em;
       max-width: 95%;
       line-height: 1.7;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .guest-actions img {
@@ -168,7 +182,14 @@
     }
   }
 
-  /* ✅ Printable flyer */
+  /* ✅ Small phones (portrait) */
+  @media (max-width: 480px) {
+    .guestbook h1 { font-size: 1.9em; }
+    .guestbook h2 { font-size: 1.6em; }
+    .guestbook p { font-size: 0.95em; line-height: 1.6; }
+  }
+
+  /* ✅ Printable Flyer */
   @media print {
     body { background: none; color: #3e2f3e; }
     .guestbook { background: #fff; padding: 2cm; }
@@ -194,7 +215,7 @@
   <div class="dot" onclick="scrollToSection(9)"></div>
 </div>
 
-<!-- 🖼️ Image Sections -->
+<!-- 🖼️ Connected Image Sections -->
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Illust-1.jpg" alt="Front page"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215615.png" alt="Page 1"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215655.png" alt="Page 2"></section>
