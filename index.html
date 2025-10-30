@@ -54,31 +54,51 @@
     transform: scale(1.2);
   }
 
-  /* ✅ Guestbook section */
+  /* ✅ Darker and clearer Guestbook section */
   .guestbook {
+    min-height: 100vh;
     background:
-      linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
+      linear-gradient(rgba(40, 30, 50, 0.8), rgba(40, 30, 50, 0.8)), /* darker overlay */
       url('https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Background.png')
       center/cover no-repeat;
-    color: #3e2f3e;
+    background-attachment: fixed;
+    color: #f5f0ea;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 80px 20px;
+    justify-content: flex-start;
+    padding: 100px 20px 60px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  }
+
+  /* ✅ Fade-in active state */
+  .guestbook.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .guestbook h1 {
-    font-size: 2em;
-    margin-bottom: 15px;
-    color: #b5a0c5;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  }
+
+  .guestbook h2 {
+    color: #e3d3ef;
+    margin-top: 25px;
   }
 
   .guestbook p {
     font-size: 1.1em;
     margin-bottom: 25px;
-    max-width: 650px;
+    max-width: 680px;
+    line-height: 1.7;
+    color: #f0e8f7;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
   }
 
   /* ✅ QR code + button container */
@@ -95,7 +115,7 @@
     width: 250px;
     height: 250px;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
 
   .guest-actions a {
@@ -131,10 +151,14 @@
 
   /* ✅ Mobile adjustments */
   @media (max-width: 768px) {
-    .guestbook h1 { font-size: 1.6em; }
-    .guestbook p { font-size: 1em; }
+    .guestbook {
+      padding: 80px 20px 40px;
+      justify-content: flex-start;
+    }
+    .guestbook h1 { font-size: 1.7em; }
+    .guestbook p { font-size: 1em; max-width: 90%; }
     .guest-actions img { width: 200px; height: 200px; }
-    .guest-actions a { width: 80%; font-size: 1em; }
+    .guest-actions a { width: 85%; font-size: 1em; }
   }
 
   /* ✅ Printable flyer */
@@ -199,7 +223,7 @@
        target="_blank">💌 I-open ang Form</a>
   </div>
 
-  <p style="margin-top:25px;font-style:italic;color:#b5a0c5;">
+  <p style="margin-top:25px;font-style:italic;color:#e0c8f2;">
     💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!  
     <br><br>— Pagmamahal,<br><strong>Jhezel at Edgardo 💍</strong>
   </p>
@@ -209,6 +233,7 @@
 <script>
   const dots = document.querySelectorAll('.dot');
   const sections = document.querySelectorAll('section');
+  const guestbook = document.querySelector('.guestbook');
 
   function scrollToSection(i) {
     sections[i].scrollIntoView({ behavior: 'smooth' });
@@ -219,6 +244,10 @@
     while (--index && window.scrollY + 200 < sections[index].offsetTop) {}
     dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
+
+    // Fade in guestbook when it appears
+    const rect = guestbook.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.75) guestbook.classList.add('visible');
   });
 
   // 🎵 Music toggle
