@@ -120,16 +120,19 @@
     transform: scale(1.2);
   }
 
-  /* ✅ Guestbook Section - seamless blend with last image */
+  /* ✅ Soft fade overlay between last image and guestbook */
+  .fade-overlay {
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(to bottom, rgba(233,222,234,0), rgba(233,222,234,0.95));
+  }
+
+  /* ✅ Guestbook Section with updated background */
   .guestbook {
     min-height: 100vh;
     background:
-      linear-gradient(
-        rgba(242, 236, 240, 0.95),
-        rgba(237, 228, 238, 0.95),
-        rgba(233, 222, 234, 0.96)
-      ),
-      url('https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20220004.png')
+      linear-gradient(rgba(242,236,240,0.92), rgba(237,228,238,0.93), rgba(233,222,234,0.94)),
+      url('https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Background.png')
       center/cover no-repeat;
     background-attachment: fixed;
     color: #3e2f3e;
@@ -198,7 +201,7 @@
     background: #a98fc0;
   }
 
-  /* ✅ Mobile Fixes for Guestbook */
+  /* ✅ Mobile Fixes */
   @media (max-width: 768px) {
     .overlay-text {
       font-size: 2em;
@@ -287,6 +290,9 @@
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215853.png" alt="Page 6"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215939.png" alt="Page 7"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20220004.png" alt="Page 8"></section>
+
+<!-- 🌸 Soft Fade Overlap -->
+<div class="fade-overlay"></div>
 
 <!-- 💌 Guestbook Section -->
 <section class="guestbook" id="guestbook">
