@@ -16,7 +16,7 @@
   }
 
   section {
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -25,12 +25,12 @@
     overflow: hidden;
   }
 
-  /* ✅ Show full image on any device */
+  /* ✅ Full bleed image (no black borders, fits all devices) */
   section img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    background-color: #000;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   /* ✅ Navigation dots */
@@ -146,17 +146,9 @@
 
   /* ✅ A4 Printable Flyer */
   @media print {
-    body {
-      background: none;
-      color: #3e2f3e;
-    }
-    .guestbook {
-      background: #fff;
-      padding: 2cm;
-    }
-    .guest-actions img {
-      width: 220px; height: 220px;
-    }
+    body { background: none; color: #3e2f3e; }
+    .guestbook { background: #fff; padding: 2cm; }
+    .guest-actions img { width: 220px; height: 220px; }
     .nav-dots, #music { display: none; }
   }
 </style>
@@ -207,7 +199,7 @@
   <p>I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin.</p>
 
   <div class="guest-actions">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://docs.google.com/forms/d/e/1FAIpQLScg18cx65BOiutYEidibh0i7cxK_Rzj7nHAaTtgZJnmr-Xg3w/viewform"
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLScg18cx65BOiutYEidibh0i7cxK_Rzj7nHAaTtgZJnmr-Xg3w%2Fviewform"
          alt="QR Code para sa Wedding Form">
 
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScg18cx65BOiutYEidibh0i7cxK_Rzj7nHAaTtgZJnmr-Xg3w/viewform" 
