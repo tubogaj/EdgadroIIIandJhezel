@@ -5,20 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jhezel & Edgardo Wedding 💍</title>
 
-<!-- 🌸 Elegant Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- 🌸 Matching Wedding Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: "Poppins", sans-serif;
+    font-family: "Playfair Display", serif;
     scroll-behavior: smooth;
     overflow-x: hidden;
     background: #000;
   }
 
-  /* ✅ Full-width connected image sections (no fade) */
+  /* ✅ Full-width connected images, no fade line */
   section {
     width: 100%;
     display: block;
@@ -31,7 +31,7 @@
     display: block;
   }
 
-  /* ✅ Navigation Dots */
+  /* ✅ Navigation dots */
   .nav-dots {
     position: fixed;
     top: 50%;
@@ -57,33 +57,32 @@
     transform: scale(1.2);
   }
 
-  /* ✅ Guestbook Section */
+  /* ✅ Guestbook Section - same style as wedding image */
   .guestbook {
     min-height: 100vh;
     background:
-      linear-gradient(rgba(255,255,255,0.85), rgba(245,240,250,0.9)),
+      linear-gradient(rgba(255,255,255,0.9), rgba(250,245,255,0.95)),
       url('https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Background.png')
       center/cover no-repeat;
-    background-attachment: fixed;
     color: #3e2f3e;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 100px 20px 80px;
+    padding: 100px 25px 80px;
   }
 
   .guestbook h1 {
-    font-family: "Great Vibes", cursive;
-    font-size: 3em;
-    color: #704a8c;
+    font-family: "Allura", cursive;
+    font-size: 3.2em;
+    color: #6b4a91;
     margin-bottom: 25px;
-    text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+    letter-spacing: 1px;
   }
 
   .guestbook h2 {
-    font-family: "Great Vibes", cursive;
+    font-family: "Allura", cursive;
     font-size: 2.2em;
     color: #8d63aa;
     margin-top: 35px;
@@ -91,9 +90,10 @@
   }
 
   .guestbook p {
-    font-size: 1.15em;
+    font-family: "Playfair Display", serif;
+    font-size: 1.1em;
     margin-bottom: 30px;
-    max-width: 750px;
+    max-width: 700px;
     line-height: 1.8;
     color: #4b3c5a;
   }
@@ -131,7 +131,7 @@
     background: #9b6cb8;
   }
 
-  /* ✅ Mobile Responsive Design */
+  /* ✅ Responsive Design */
   @media (max-width: 768px) {
     .guestbook {
       padding: 70px 25px 60px;
@@ -139,7 +139,7 @@
     }
 
     .guestbook h1 {
-      font-size: 2.2em;
+      font-size: 2.4em;
       margin-bottom: 18px;
     }
 
@@ -168,9 +168,9 @@
     }
   }
 
-  /* ✅ Small phones (portrait) */
+  /* ✅ Small Phones */
   @media (max-width: 480px) {
-    .guestbook h1 { font-size: 1.9em; }
+    .guestbook h1 { font-size: 2em; }
     .guestbook h2 { font-size: 1.6em; }
     .guestbook p { font-size: 0.95em; line-height: 1.6; }
   }
@@ -201,7 +201,7 @@
   <div class="dot" onclick="scrollToSection(9)"></div>
 </div>
 
-<!-- 🖼️ Connected Image Sections (No Fade Line) -->
+<!-- 🖼️ Image Sections -->
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Illust-1.jpg" alt="Front page"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215615.png" alt="Page 1"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215655.png" alt="Page 2"></section>
@@ -214,7 +214,7 @@
 
 <!-- 💌 Guestbook Section -->
 <section class="guestbook" id="guestbook">
-  <h1>Mga Alaala ng Pag-iisang Dibdib nina<p>Jhezel at Edgardo III 💞</p> </h1>
+  <h1>Mga Alaala ng Pag-iisang Dibdib nina Jhezel at Edgardo III 💞</h1>
   <p>
     Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib.  
     Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐
@@ -245,11 +245,9 @@
 <script>
   const dots = document.querySelectorAll('.dot');
   const sections = document.querySelectorAll('section');
-
   function scrollToSection(i) {
     sections[i].scrollIntoView({ behavior: 'smooth' });
   }
-
   window.addEventListener('scroll', () => {
     let index = sections.length;
     while (--index && window.scrollY + 200 < sections[index].offsetTop) {}
