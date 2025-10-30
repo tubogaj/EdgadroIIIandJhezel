@@ -15,11 +15,19 @@
     background: #000;
   }
 
-  /* ✅ Each photo fills width and connects perfectly */
+  /* ✅ Sections fade in smoothly and staggered */
   section {
     width: 100%;
     display: block;
-    line-height: 0; /* removes spaces between images */
+    line-height: 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  }
+
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   section img {
@@ -54,11 +62,11 @@
     transform: scale(1.2);
   }
 
-  /* ✅ Softer, lighter guestbook section */
+  /* ✅ Guestbook section with smooth transition */
   .guestbook {
     min-height: 100vh;
     background:
-      linear-gradient(rgba(255, 255, 255, 0.85), rgba(240, 230, 250, 0.9)), /* lighter overlay */
+      linear-gradient(rgba(255,255,255,0.85), rgba(245,240,250,0.9)),
       url('https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Background.png')
       center/cover no-repeat;
     background-attachment: fixed;
@@ -68,28 +76,39 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 100px 20px 70px;
+    padding: 100px 20px 80px;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    position: relative;
   }
 
-  /* ✅ Fade-in active state */
+  /* ✅ Seamless blend at top edge */
+  .guestbook::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+  }
+
   .guestbook.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
   .guestbook h1 {
-    font-size: 2.4em;
+    font-size: 2.3em;
     margin-bottom: 25px;
     color: #704a8c;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+    text-shadow: 0 1px 2px rgba(255,255,255,0.5);
   }
 
   .guestbook h2 {
     color: #8d63aa;
-    margin-top: 30px;
+    margin-top: 35px;
     margin-bottom: 10px;
   }
 
@@ -101,7 +120,7 @@
     color: #4b3c5a;
   }
 
-  /* ✅ QR code + button container */
+  /* ✅ QR + Button */
   .guest-actions {
     display: flex;
     flex-direction: column;
@@ -149,15 +168,35 @@
     backdrop-filter: blur(6px);
   }
 
-  /* ✅ Mobile adjustments */
+  /* ✅ Mobile and tablet responsive adjustments */
   @media (max-width: 768px) {
     .guestbook {
-      padding: 80px 20px 50px;
+      padding: 80px 25px 60px;
+      background-attachment: scroll;
     }
-    .guestbook h1 { font-size: 1.8em; }
-    .guestbook p { font-size: 1em; max-width: 90%; }
-    .guest-actions img { width: 200px; height: 200px; }
-    .guest-actions a { width: 85%; font-size: 1em; }
+
+    .guestbook h1 {
+      font-size: 1.8em;
+      margin-bottom: 18px;
+    }
+
+    .guestbook p {
+      font-size: 1em;
+      max-width: 95%;
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .guest-actions img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .guest-actions a {
+      width: 85%;
+      font-size: 1em;
+      padding: 12px 20px;
+    }
   }
 
   /* ✅ Printable flyer */
@@ -192,7 +231,7 @@
   <div class="dot" onclick="scrollToSection(9)"></div>
 </div>
 
-<!-- 🖼️ Full-width connected image sections -->
+<!-- 🖼️ Fade-in Image Sections -->
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Illust-1.jpg" alt="Front page"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215615.png" alt="Page 1"></section>
 <section><img src="https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Screenshot%202025-10-29%20215655.png" alt="Page 2"></section>
@@ -206,7 +245,6 @@
 <!-- 💌 Guestbook Section -->
 <section class="guestbook" id="guestbook">
   <h1>Mga Alaala ng Pag-iisang Dibdib nina Jhezel at Edgardo III 💞</h1>
-
   <p>
     Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib.  
     Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐
@@ -243,15 +281,19 @@
     sections[i].scrollIntoView({ behavior: 'smooth' });
   }
 
+  // Smooth fade-in and stagger effect
   window.addEventListener('scroll', () => {
     let index = sections.length;
     while (--index && window.scrollY + 200 < sections[index].offsetTop) {}
     dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
 
-    // Fade in guestbook when visible
-    const rect = guestbook.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.75) guestbook.classList.add('visible');
+    sections.forEach((sec, i) => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        setTimeout(() => sec.classList.add('visible'), i * 120);
+      }
+    });
   });
 
   // 🎵 Music toggle
