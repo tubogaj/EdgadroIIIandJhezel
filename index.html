@@ -54,21 +54,21 @@
     transform: scale(1.2);
   }
 
-  /* ✅ Darker and clearer Guestbook section */
+  /* ✅ Softer, lighter guestbook section */
   .guestbook {
     min-height: 100vh;
     background:
-      linear-gradient(rgba(40, 30, 50, 0.8), rgba(40, 30, 50, 0.8)), /* darker overlay */
+      linear-gradient(rgba(255, 255, 255, 0.85), rgba(240, 230, 250, 0.9)), /* lighter overlay */
       url('https://raw.githubusercontent.com/tubogaj/EdgadroIIIandJhezel/main/Background.png')
       center/cover no-repeat;
     background-attachment: fixed;
-    color: #f5f0ea;
+    color: #3e2f3e;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 100px 20px 60px;
+    padding: 100px 20px 70px;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
@@ -81,24 +81,24 @@
   }
 
   .guestbook h1 {
-    font-size: 2.2em;
-    margin-bottom: 20px;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    font-size: 2.4em;
+    margin-bottom: 25px;
+    color: #704a8c;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.6);
   }
 
   .guestbook h2 {
-    color: #e3d3ef;
-    margin-top: 25px;
+    color: #8d63aa;
+    margin-top: 30px;
+    margin-bottom: 10px;
   }
 
   .guestbook p {
-    font-size: 1.1em;
-    margin-bottom: 25px;
-    max-width: 680px;
-    line-height: 1.7;
-    color: #f0e8f7;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    font-size: 1.15em;
+    margin-bottom: 30px;
+    max-width: 750px;
+    line-height: 1.8;
+    color: #4b3c5a;
   }
 
   /* ✅ QR code + button container */
@@ -108,30 +108,30 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin: 25px auto;
+    margin: 35px auto 25px;
   }
 
   .guest-actions img {
     width: 250px;
     height: 250px;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
 
   .guest-actions a {
     display: inline-block;
-    background: #b5a0c5;
+    background: #a97cc5;
     color: #fff;
     text-decoration: none;
     border-radius: 10px;
     padding: 14px 28px;
     font-size: 1.1em;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: 0.3s;
   }
 
   .guest-actions a:hover {
-    background: #a98fc0;
+    background: #9b6cb8;
   }
 
   /* ✅ Music toggle */
@@ -140,7 +140,7 @@
     bottom: 20px;
     left: 20px;
     z-index: 9999;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.3);
     border-radius: 50%;
     border: none;
     width: 50px;
@@ -152,10 +152,9 @@
   /* ✅ Mobile adjustments */
   @media (max-width: 768px) {
     .guestbook {
-      padding: 80px 20px 40px;
-      justify-content: flex-start;
+      padding: 80px 20px 50px;
     }
-    .guestbook h1 { font-size: 1.7em; }
+    .guestbook h1 { font-size: 1.8em; }
     .guestbook p { font-size: 1em; max-width: 90%; }
     .guest-actions img { width: 200px; height: 200px; }
     .guest-actions a { width: 85%; font-size: 1em; }
@@ -207,13 +206,17 @@
 <!-- 💌 Guestbook Section -->
 <section class="guestbook" id="guestbook">
   <h1>Mga Alaala ng Pag-iisang Dibdib nina Jhezel at Edgardo III 💞</h1>
+
   <p>
     Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisang dibdib.  
     Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan. 💐
   </p>
 
   <h2>💌 Ibahagi ang Iyong Alaala 💖</h2>
-  <p>I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin.</p>
+  <p>
+    I-scan ang QR code o i-click ang button sa ibaba upang mag-upload ng iyong larawan at mensahe para sa amin.  
+    Ang iyong pagbati ay magiging espesyal na bahagi ng aming alaala. 🌸
+  </p>
 
   <div class="guest-actions">
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLScg18cx65BOiutYEidibh0i7cxK_Rzj7nHAaTtgZJnmr-Xg3w%2Fviewform"
@@ -223,8 +226,9 @@
        target="_blank">💌 I-open ang Form</a>
   </div>
 
-  <p style="margin-top:25px;font-style:italic;color:#e0c8f2;">
+  <p style="margin-top:30px;font-style:italic;color:#6b4d82;">
     💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!  
+    <br>Ang iyong mensahe ay magpapasaya sa aming puso sa tuwing aming babalikan ito.  
     <br><br>— Pagmamahal,<br><strong>Jhezel at Edgardo 💍</strong>
   </p>
 </section>
@@ -245,7 +249,7 @@
     dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
 
-    // Fade in guestbook when it appears
+    // Fade in guestbook when visible
     const rect = guestbook.getBoundingClientRect();
     if (rect.top < window.innerHeight * 0.75) guestbook.classList.add('visible');
   });
